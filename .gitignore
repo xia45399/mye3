@@ -1,0 +1,11 @@
+# 该文件作用是，配置，git忽略，哪些文件不上传，不监控其变化
+# idea 相关
+.idea
+*.iml
+target/
+
+#eclipse 相关
+.settins/
+.project
+.classpatch
+out/
