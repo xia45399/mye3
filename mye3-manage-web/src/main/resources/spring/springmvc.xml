@@ -12,7 +12,7 @@
 
     <mvc:annotation-driven/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="prefix" value="/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
     <!-- 配置资源映射 -->
@@ -21,5 +21,6 @@
 
     <dubbo:application name="mye3-manage-web"/>
     <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
-    <dubbo:reference interface="com.summer.service.ItemService" id="itemService"/>
+    <dubbo:reference interface="com.summer.service.ItemService" id="itemService" timeout="600000"/>
+    <dubbo:reference interface="com.summer.service.ItemCatService" id="itemCatService" timeout="600000"/>
 </beans>
