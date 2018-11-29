@@ -11,7 +11,14 @@
 - RPC框架: Dubbo + Zookeeper 
 
 ![](https://raw.githubusercontent.com/xia45399/mye3/master/jiagou.png)
+
 #### 使用说明
 
+服务层
+- manage-service 商品服务 8181
+- content-service 内容服务 8182
 
+表现层
+- manage-web 后台管理系统 8081
+- portable-web 商城门户系统 8082
 

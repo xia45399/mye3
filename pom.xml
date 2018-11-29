@@ -10,6 +10,13 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>mye3-common</module>
+        <module>mye3-manage</module>
+        <module>mye3-manage-web</module>
+        <module>mye3-content</module>
+        <module>mye3-portal-web</module>
+    </modules>
     <!-- 集中定义依赖版本号 -->
     <properties>
         <junit.version>4.12</junit.version>
