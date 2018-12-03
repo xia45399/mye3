@@ -16,6 +16,8 @@
         <module>mye3-manage-web</module>
         <module>mye3-content</module>
         <module>mye3-portal-web</module>
+        <module>mye3-sso</module>
+        <module>mye3-sso-web</module>
     </modules>
     <!-- 集中定义依赖版本号 -->
     <properties>
