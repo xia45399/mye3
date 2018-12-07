@@ -21,8 +21,16 @@
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.summer.portal.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <dubbo:application name="mye3-portal-web"/>
     <dubbo:registry protocol="zookeeper" address="localhost:2181"/>
     <dubbo:reference interface="com.summer.content.service.ContentService" id="contentService" timeout="600000"/>
     <dubbo:reference interface="com.summer.content.service.ContentCategoryService" id="contentCategoryService"/>
+    <dubbo:reference interface="com.summer.mye3.sso.service.TokenService" id="tokenService"/>
 </beans>
