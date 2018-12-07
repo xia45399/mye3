@@ -10,12 +10,23 @@
 	
 	<!-- 连接redis单机版 -->
 	<bean id="jedisClientPool" class="com.summer.common.jedis.JedisClientPool">
-		<property name="jedisPool" ref="jedisPool"></property>
+        <property name="jedisPool" ref="jedisPool"/>
 	</bean>
-	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-		<constructor-arg name="host" value="localhost"/>
-		<constructor-arg name="port" value="6379"/>
-	</bean>
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <!--新版是maxTotal，旧版是maxActive-->
+        <!--<property name="maxTotal" value="${redis.maxActive}"/>-->
+        <!--<property name="maxIdle" value="${redis.maxIdle}"/>-->
+        <!--<property name="testOnBorrow" value="true"/>-->
+        <!--<property name="testOnReturn" value="true"/>-->
+    </bean>
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="host" value="localhost"/>
+        <constructor-arg name="port" value="6379"/>
+        <constructor-arg name="password" value="123456"/>
+        <constructor-arg name="timeout" value="3000"/>
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+    </bean>
 	<!-- 连接redis集群 -->
 	<!-- <bean id="jedisClientCluster" class="cn.e3mall.common.jedis.JedisClientCluster">
 		<property name="jedisCluster" ref="jedisCluster"/>
