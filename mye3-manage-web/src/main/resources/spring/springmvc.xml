@@ -21,8 +21,8 @@
 
     <dubbo:application name="mye3-manage-web"/>
     <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
-    <dubbo:reference interface="com.summer.service.ItemService" id="itemService" timeout="600000"/>
-    <dubbo:reference interface="com.summer.service.ItemCatService" id="itemCatService" timeout="600000"/>
-    <dubbo:reference interface="com.summer.content.service.ContentService" id="contentService" timeout="600000"/>
+    <dubbo:reference interface="com.summer.service.ItemService" id="itemService"/>
+    <dubbo:reference interface="com.summer.service.ItemCatService" id="itemCatService"/>
+    <dubbo:reference interface="com.summer.content.service.ContentService" id="contentService"/>
     <dubbo:reference interface="com.summer.content.service.ContentCategoryService" id="contentCategoryService"/>
 </beans>
