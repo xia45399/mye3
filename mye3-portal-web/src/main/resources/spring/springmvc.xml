@@ -22,7 +22,7 @@
     <mvc:resources location="/js/" mapping="/js/**"/>
 
     <dubbo:application name="mye3-portal-web"/>
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    <dubbo:registry protocol="zookeeper" address="localhost:2181"/>
     <dubbo:reference interface="com.summer.content.service.ContentService" id="contentService" timeout="600000"/>
     <dubbo:reference interface="com.summer.content.service.ContentCategoryService" id="contentCategoryService"/>
 </beans>

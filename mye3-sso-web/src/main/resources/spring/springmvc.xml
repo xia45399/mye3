@@ -23,7 +23,7 @@
     <mvc:resources location="/images/" mapping="/images/**"/>
 
     <dubbo:application name="mye3-sso-web"/>
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    <dubbo:registry protocol="zookeeper" address="localhost:2181"/>
     <dubbo:reference interface="com.summer.mye3.sso.service.RegisterService" id="registerService"/>
     <dubbo:reference interface="com.summer.mye3.sso.service.LoginService" id="loginService"/>
     <dubbo:reference interface="com.summer.mye3.sso.service.TokenService" id="tokenService"/>

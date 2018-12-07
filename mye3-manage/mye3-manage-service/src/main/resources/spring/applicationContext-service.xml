@@ -12,7 +12,7 @@
     <context:component-scan base-package="com.summer.service"/>
 
     <dubbo:application name="mye3-manage"/>
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    <dubbo:registry protocol="zookeeper" address="localhost:2181"/>
     <dubbo:protocol name="dubbo" port="20881"/>
     <dubbo:service interface="com.summer.service.ItemService" ref="itemServiceImpl"/>
     <dubbo:service interface="com.summer.service.ItemCatService" ref="itemCatServiceImpl"/>
