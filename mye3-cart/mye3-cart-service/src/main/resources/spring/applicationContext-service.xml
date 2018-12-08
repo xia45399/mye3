@@ -9,13 +9,10 @@
 	   http://www.springframework.org/schema/context/spring-context-4.2.xsd
 	   http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <context:component-scan base-package="com.summer.mye3.sso.service"/>
-    <context:component-scan base-package="com.summer.mye3.sso.controller"/>
+    <context:component-scan base-package="com.summer.mye3.cart.service"/>
 
-    <dubbo:application name="mye3-sso"/>
+    <dubbo:application name="mye3-cart"/>
     <dubbo:registry protocol="zookeeper" address="localhost:2181"/>
-    <dubbo:protocol name="dubbo" port="20883"/>
-    <dubbo:service interface="com.summer.mye3.sso.service.LoginService" ref="loginServiceImpl"/>
-    <dubbo:service interface="com.summer.mye3.sso.service.RegisterService" ref="registerServiceImpl"/>
-    <dubbo:service interface="com.summer.mye3.sso.service.TokenService" ref="tokenServiceImpl"/>
+    <dubbo:protocol name="dubbo" port="20884"/>
+    <dubbo:service interface="com.summer.mye3.cart.service.CartService" ref="cartServiceImpl"/>
 </beans>

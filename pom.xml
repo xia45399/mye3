@@ -18,6 +18,8 @@
         <module>mye3-portal-web</module>
         <module>mye3-sso</module>
         <module>mye3-sso-web</module>
+        <module>mye3-cart</module>
+        <module>mye3-cart-web</module>
     </modules>
     <!-- 集中定义依赖版本号 -->
     <properties>

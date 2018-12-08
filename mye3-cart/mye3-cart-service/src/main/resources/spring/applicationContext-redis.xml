@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
-	
+
 	<!-- 连接redis单机版 -->
 	<bean id="jedisClientPool" class="com.summer.common.jedis.JedisClientPool">
-        <property name="jedisPool" ref="jedisPool"/>
+		<property name="jedisPool" ref="jedisPool"/>
 	</bean>
 
-    <!--Jedis连接池的相关配置-->
-    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <!--新版是maxTotal，旧版是maxActive-->
-        <property name="maxTotal" value="600"/>
-        <property name="maxIdle" value="300"/>
-        <property name="testOnBorrow" value="true"/>
-        <property name="testOnReturn" value="true"/>
-    </bean>
-
-    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
-        <constructor-arg name="host" value="localhost" />
-        <constructor-arg name="port" value="6379" type="int" />
-        <constructor-arg name="timeout" value="3000" type="int" />
-        <!--<constructor-arg name="password" value="123456" />-->
-    </bean>
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<!--新版是maxTotal，旧版是maxActive-->
+		<!--<property name="maxTotal" value="${redis.maxActive}"/>-->
+		<!--<property name="maxIdle" value="${redis.maxIdle}"/>-->
+		<!--<property name="testOnBorrow" value="true"/>-->
+		<!--<property name="testOnReturn" value="true"/>-->
+	</bean>
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg name="host" value="localhost"/>
+		<constructor-arg name="port" value="6379"/>
+		<constructor-arg name="password" value="123456"/>
+		<constructor-arg name="timeout" value="3000"/>
+		<constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+	</bean>
 	<!-- 连接redis集群 -->
 	<!-- <bean id="jedisClientCluster" class="cn.e3mall.common.jedis.JedisClientCluster">
 		<property name="jedisCluster" ref="jedisCluster"/>
