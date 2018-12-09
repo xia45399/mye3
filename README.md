@@ -21,4 +21,5 @@
 表现层
 - manage-web 后台管理系统 8081
 - portable-web 商城门户系统 8082
+- search-web 搜索 8085
 
