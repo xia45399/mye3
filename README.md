@@ -17,9 +17,13 @@
 服务层
 - manage-service 商品服务 8181
 - content-service 内容服务 8182
+- sso-service 单点登陆  8183
 
 表现层
 - manage-web 后台管理系统 8081
 - portable-web 商城门户系统 8082
+- sso-web 登陆统 8083
 - search-web 搜索 8085
+- item-web 商品详情页面 8086
+
 

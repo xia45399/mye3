@@ -19,6 +19,7 @@
         <module>mye3-sso</module>
         <module>mye3-sso-web</module>
         <module>mye3-search-web</module>
+        <module>mye3-item-web</module>
     </modules>
     <!-- 集中定义依赖版本号 -->
     <properties>
