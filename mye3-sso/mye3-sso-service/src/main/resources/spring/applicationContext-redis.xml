@@ -23,7 +23,6 @@
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
         <constructor-arg name="host" value="localhost"/>
         <constructor-arg name="port" value="6379"/>
-        <constructor-arg name="password" value="123456"/>
         <constructor-arg name="timeout" value="3000"/>
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
     </bean>
