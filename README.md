@@ -27,6 +27,6 @@
 - item-web 商品详情页面 8086
 
 demo地址
-web.xsummer.cc:8082
+- http://web.xsummer.cc:8082
 
 
