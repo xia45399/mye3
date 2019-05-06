@@ -1,14 +1,13 @@
-package com.summer.controller;
+package com.summer.manage.controller;
 
 import com.summer.common.pojo.EasyUITreeNode;
 import com.summer.common.utils.E3Result;
 import com.summer.content.service.ContentCategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -21,15 +20,14 @@ import java.util.List;
  *
  * @version 1.0
  */
-@Controller
+@RestController
 @RequestMapping("content")
 public class ContentCatController {
 
-    @Autowired
+    @Reference
     private ContentCategoryService contentCategoryService;
 
     @RequestMapping("/category/list")
-    @ResponseBody
     public List<EasyUITreeNode> getContentCatList(@RequestParam(name = "id", defaultValue = "0") Long parentId) {
         List<EasyUITreeNode> list = contentCategoryService.getContentCatList(parentId);
         return list;
@@ -39,7 +37,6 @@ public class ContentCatController {
      * 添加分类节点
      */
     @RequestMapping(value = "/category/create", method = RequestMethod.POST)
-    @ResponseBody
     public E3Result createContentCategory(Long parentId, String name) {
         //调用服务添加节点
         E3Result e3Result = contentCategoryService.addContentCategory(parentId, name);

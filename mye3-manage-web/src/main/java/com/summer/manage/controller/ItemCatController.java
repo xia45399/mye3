@@ -1,8 +1,8 @@
-package com.summer.controller;
+package com.summer.manage.controller;
 
 import com.summer.common.pojo.EasyUITreeNode;
 import com.summer.service.ItemCatService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +17,7 @@ import java.util.List;
 @Controller
 public class ItemCatController {
 
-    @Autowired
+    @Reference
     private ItemCatService itemCatService;
 
     @RequestMapping("/item/cat/list")

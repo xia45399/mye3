@@ -1,17 +1,16 @@
-package com.summer.controller;
+package com.summer.manage.controller;
 
 
 import com.summer.common.pojo.EasyUIDataGridResult;
 import com.summer.common.utils.E3Result;
 import com.summer.pojo.TbItem;
 import com.summer.service.ItemService;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.annotation.Resource;
 
 /**
  * 商品管理Controller
@@ -21,7 +20,8 @@ import javax.annotation.Resource;
 @Controller
 @RequestMapping("/item")
 public class ItemController {
-    @Resource
+
+    @Reference
     private ItemService itemService;
 
     @RequestMapping("/{itemId}")
@@ -43,7 +43,7 @@ public class ItemController {
     /**
      * 商品添加功能
      */
-    @RequestMapping(value="/save", method= RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
     public E3Result addItem(TbItem item, String desc) {
         E3Result result = itemService.addItem(item, desc);
