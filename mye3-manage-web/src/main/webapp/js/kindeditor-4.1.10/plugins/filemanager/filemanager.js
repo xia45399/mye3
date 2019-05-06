@@ -7,9 +7,9 @@
 * @licence http://www.kindsoft.net/license.php
 *******************************************************************************/
 
-KindEditor.plugin('filemanager', function(K) {
-	var self = this, name = 'filemanager',
-		fileManagerJson = K.undef(self.fileManagerJson, self.basePath + 'php/file_manager_json.php'),
+KindEditor.plugin('filemanage', function(K) {
+	var self = this, name = 'filemanage',
+		filemanageJson = K.undef(self.filemanageJson, self.basePath + 'php/file_manage_json.php'),
 		imgPath = self.pluginsPath + name + '/images/',
 		lang = self.lang(name + '.');
 	function makeFileTitle(filename, filesize, datetime) {
@@ -22,7 +22,7 @@ KindEditor.plugin('filemanager', function(K) {
 			el.attr('title', makeFileTitle(data.filename, data.filesize, data.datetime));
 		}
 	}
-	self.plugin.filemanagerDialog = function(options) {
+	self.plugin.filemanageDialog = function(options) {
 		var width = K.undef(options.width, 650),
 			height = K.undef(options.height, 510),
 			dirName = K.undef(options.dirName, ''),
@@ -31,7 +31,7 @@ KindEditor.plugin('filemanager', function(K) {
 		var html = [
 			'<div style="padding:10px 20px;">',
 			// header start
-			'<div class="ke-plugin-filemanager-header">',
+			'<div class="ke-plugin-filemanage-header">',
 			// left start
 			'<div class="ke-left">',
 			'<img class="ke-inline-block" name="moveupImg" src="' + imgPath + 'go-up.gif" width="16" height="16" border="0" alt="" /> ',
@@ -52,7 +52,7 @@ KindEditor.plugin('filemanager', function(K) {
 			'<div class="ke-clearfix"></div>',
 			'</div>',
 			// body start
-			'<div class="ke-plugin-filemanager-body"></div>',
+			'<div class="ke-plugin-filemanage-body"></div>',
 			'</div>'
 		].join('');
 		var dialog = self.createDialog({
@@ -63,7 +63,7 @@ KindEditor.plugin('filemanager', function(K) {
 			body : html
 		}),
 		div = dialog.div,
-		bodyDiv = K('.ke-plugin-filemanager-body', div),
+		bodyDiv = K('.ke-plugin-filemanage-body', div),
 		moveupImg = K('[name="moveupImg"]', div),
 		moveupLink = K('[name="moveupLink"]', div),
 		viewServerBtn = K('[name="viewServer"]', div),
@@ -72,7 +72,7 @@ KindEditor.plugin('filemanager', function(K) {
 		function reloadPage(path, order, func) {
 			var param = 'path=' + path + '&order=' + order + '&dir=' + dirName;
 			dialog.showLoading(self.lang('ajaxLoading'));
-			K.ajax(K.addParam(fileManagerJson, param + '&' + new Date().getTime()), function(data) {
+			K.ajax(K.addParam(filemanageJson, param + '&' + new Date().getTime()), function(data) {
 				dialog.hideLoading();
 				func(data);
 			});

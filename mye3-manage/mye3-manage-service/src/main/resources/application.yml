@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: manage-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/mye3?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: mye3
+    password: mye3
+  redis:
+    host: localhost
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+dubbo:
+  registry:
+    address: zookeeper://localhost:2181
+    check: false
+  consumer:
+    check: false
+  scan:
+    base-packages: com.summer.manage.service.impl
+#商品数据在缓存中key的前缀
+REDIS_ITEM_PRE: ITEM_INFO
+#商品数据缓存的过期时间，默认为一小时
+ITEM_CACHE_EXPIRE: 3600
+

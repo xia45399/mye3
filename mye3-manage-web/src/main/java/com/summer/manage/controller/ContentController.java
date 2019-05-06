@@ -2,7 +2,7 @@ package com.summer.manage.controller;
 
 import com.summer.common.utils.E3Result;
 import com.summer.content.service.ContentService;
-import com.summer.pojo.TbContent;
+import com.summer.manage.pojo.TbContent;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

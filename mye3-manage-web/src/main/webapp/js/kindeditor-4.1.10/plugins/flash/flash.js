@@ -10,7 +10,7 @@
 KindEditor.plugin('flash', function(K) {
 	var self = this, name = 'flash', lang = self.lang(name + '.'),
 		allowFlashUpload = K.undef(self.allowFlashUpload, true),
-		allowFileManager = K.undef(self.allowFileManager, false),
+		allowFilemanage = K.undef(self.allowFilemanage, false),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
 		extraParams = K.undef(self.extraFileUploadParams, {}),
 		filePostName = K.undef(self.filePostName, 'imgFile'),
@@ -119,10 +119,10 @@ KindEditor.plugin('flash', function(K) {
 				K('.ke-upload-button', div).hide();
 			}
 
-			if (allowFileManager) {
+			if (allowFilemanage) {
 				viewServerBtn.click(function(e) {
-					self.loadPlugin('filemanager', function() {
-						self.plugin.filemanagerDialog({
+					self.loadPlugin('filemanage', function() {
+						self.plugin.filemanageDialog({
 							viewType : 'LIST',
 							dirName : 'flash',
 							clickFn : function(url, title) {

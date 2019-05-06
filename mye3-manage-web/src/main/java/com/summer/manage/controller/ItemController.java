@@ -3,8 +3,8 @@ package com.summer.manage.controller;
 
 import com.summer.common.pojo.EasyUIDataGridResult;
 import com.summer.common.utils.E3Result;
-import com.summer.pojo.TbItem;
-import com.summer.service.ItemService;
+import com.summer.manage.pojo.TbItem;
+import com.summer.manage.service.ItemService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

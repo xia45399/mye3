@@ -6011,7 +6011,7 @@ KindEditor.lang({
 	fullscreen : '全屏显示',
 	about : '关于',
 	print : '打印(Ctrl+P)',
-	filemanager : '文件空间',
+	filemanage : '文件空间',
 	code : '插入程序代码',
 	map : 'Google地图',
 	baidumap : '百度地图',
@@ -6113,15 +6113,15 @@ KindEditor.lang({
 	'multiimage.unknownError' : '发生异常，无法上传。',
 	'multiimage.pending' : '等待上传',
 	'multiimage.uploadError' : '上传失败',
-	'filemanager.emptyFolder' : '空文件夹',
-	'filemanager.moveup' : '移到上一级文件夹',
-	'filemanager.viewType' : '显示方式：',
-	'filemanager.viewImage' : '缩略图',
-	'filemanager.listImage' : '详细信息',
-	'filemanager.orderType' : '排序方式：',
-	'filemanager.fileName' : '名称',
-	'filemanager.fileSize' : '大小',
-	'filemanager.fileType' : '类型',
+	'filemanage.emptyFolder' : '空文件夹',
+	'filemanage.moveup' : '移到上一级文件夹',
+	'filemanage.viewType' : '显示方式：',
+	'filemanage.viewImage' : '缩略图',
+	'filemanage.listImage' : '详细信息',
+	'filemanage.orderType' : '排序方式：',
+	'filemanage.fileName' : '名称',
+	'filemanage.fileSize' : '大小',
+	'filemanage.fileType' : '类型',
 	'insertfile.url' : 'URL',
 	'insertfile.title' : '文件说明',
 	'insertfile.upload' : '上传',
@@ -6616,9 +6616,9 @@ KindEditor.plugin('emoticons', function(K) {
 * @licence http://www.kindsoft.net/license.php
 *******************************************************************************/
 
-KindEditor.plugin('filemanager', function(K) {
-	var self = this, name = 'filemanager',
-		fileManagerJson = K.undef(self.fileManagerJson, self.basePath + 'php/file_manager_json.php'),
+KindEditor.plugin('filemanage', function(K) {
+	var self = this, name = 'filemanage',
+		filemanageJson = K.undef(self.filemanageJson, self.basePath + 'php/file_manage_json.php'),
 		imgPath = self.pluginsPath + name + '/images/',
 		lang = self.lang(name + '.');
 	function makeFileTitle(filename, filesize, datetime) {
@@ -6631,7 +6631,7 @@ KindEditor.plugin('filemanager', function(K) {
 			el.attr('title', makeFileTitle(data.filename, data.filesize, data.datetime));
 		}
 	}
-	self.plugin.filemanagerDialog = function(options) {
+	self.plugin.filemanageDialog = function(options) {
 		var width = K.undef(options.width, 650),
 			height = K.undef(options.height, 510),
 			dirName = K.undef(options.dirName, ''),
@@ -6640,7 +6640,7 @@ KindEditor.plugin('filemanager', function(K) {
 		var html = [
 			'<div style="padding:10px 20px;">',
 			// header start
-			'<div class="ke-plugin-filemanager-header">',
+			'<div class="ke-plugin-filemanage-header">',
 			// left start
 			'<div class="ke-left">',
 			'<img class="ke-inline-block" name="moveupImg" src="' + imgPath + 'go-up.gif" width="16" height="16" border="0" alt="" /> ',
@@ -6661,7 +6661,7 @@ KindEditor.plugin('filemanager', function(K) {
 			'<div class="ke-clearfix"></div>',
 			'</div>',
 			// body start
-			'<div class="ke-plugin-filemanager-body"></div>',
+			'<div class="ke-plugin-filemanage-body"></div>',
 			'</div>'
 		].join('');
 		var dialog = self.createDialog({
@@ -6672,7 +6672,7 @@ KindEditor.plugin('filemanager', function(K) {
 			body : html
 		}),
 		div = dialog.div,
-		bodyDiv = K('.ke-plugin-filemanager-body', div),
+		bodyDiv = K('.ke-plugin-filemanage-body', div),
 		moveupImg = K('[name="moveupImg"]', div),
 		moveupLink = K('[name="moveupLink"]', div),
 		viewServerBtn = K('[name="viewServer"]', div),
@@ -6681,7 +6681,7 @@ KindEditor.plugin('filemanager', function(K) {
 		function reloadPage(path, order, func) {
 			var param = 'path=' + path + '&order=' + order + '&dir=' + dirName;
 			dialog.showLoading(self.lang('ajaxLoading'));
-			K.ajax(K.addParam(fileManagerJson, param + '&' + new Date().getTime()), function(data) {
+			K.ajax(K.addParam(filemanageJson, param + '&' + new Date().getTime()), function(data) {
 				dialog.hideLoading();
 				func(data);
 			});
@@ -6808,7 +6808,7 @@ KindEditor.plugin('filemanager', function(K) {
 KindEditor.plugin('flash', function(K) {
 	var self = this, name = 'flash', lang = self.lang(name + '.'),
 		allowFlashUpload = K.undef(self.allowFlashUpload, true),
-		allowFileManager = K.undef(self.allowFileManager, false),
+		allowFilemanage = K.undef(self.allowFilemanage, false),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
 		extraParams = K.undef(self.extraFileUploadParams, {}),
 		filePostName = K.undef(self.filePostName, 'imgFile'),
@@ -6917,10 +6917,10 @@ KindEditor.plugin('flash', function(K) {
 				K('.ke-upload-button', div).hide();
 			}
 
-			if (allowFileManager) {
+			if (allowFilemanage) {
 				viewServerBtn.click(function(e) {
-					self.loadPlugin('filemanager', function() {
-						self.plugin.filemanagerDialog({
+					self.loadPlugin('filemanage', function() {
+						self.plugin.filemanageDialog({
 							viewType : 'LIST',
 							dirName : 'flash',
 							clickFn : function(url, title) {
@@ -6971,7 +6971,7 @@ KindEditor.plugin('image', function(K) {
 		allowImageUpload = K.undef(self.allowImageUpload, true),
 		allowImageRemote = K.undef(self.allowImageRemote, true),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
-		allowFileManager = K.undef(self.allowFileManager, false),
+		allowFilemanage = K.undef(self.allowFilemanage, false),
 		uploadJson = K.undef(self.uploadJson, self.basePath + 'php/upload_json.php'),
 		imageTabIndex = K.undef(self.imageTabIndex, 0),
 		imgPath = self.pluginsPath + 'image/images/',
@@ -7046,7 +7046,7 @@ KindEditor.plugin('image', function(K) {
 			//local upload - end
 			'</div>'
 		].join('');
-		var dialogWidth = showLocal || allowFileManager ? 450 : 400,
+		var dialogWidth = showLocal || allowFilemanage ? 450 : 400,
 			dialogHeight = showLocal && showRemote ? 300 : 250;
 		var dialog = self.createDialog({
 			name : name,
@@ -7176,10 +7176,10 @@ KindEditor.plugin('image', function(K) {
 		uploadbutton.fileBox.change(function(e) {
 			localUrlBox.val(uploadbutton.fileBox.val());
 		});
-		if (allowFileManager) {
+		if (allowFilemanage) {
 			viewServerBtn.click(function(e) {
-				self.loadPlugin('filemanager', function() {
-					self.plugin.filemanagerDialog({
+				self.loadPlugin('filemanage', function() {
+					self.plugin.filemanageDialog({
 						viewType : 'VIEW',
 						dirName : 'image',
 						clickFn : function(url, title) {
@@ -7297,7 +7297,7 @@ KindEditor.plugin('image', function(K) {
 KindEditor.plugin('insertfile', function(K) {
 	var self = this, name = 'insertfile',
 		allowFileUpload = K.undef(self.allowFileUpload, true),
-		allowFileManager = K.undef(self.allowFileManager, false),
+		allowFilemanage = K.undef(self.allowFilemanage, false),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
 		uploadJson = K.undef(self.uploadJson, self.basePath + 'php/upload_json.php'),
 		extraParams = K.undef(self.extraFileUploadParams, {}),
@@ -7388,10 +7388,10 @@ KindEditor.plugin('insertfile', function(K) {
 		} else {
 			K('.ke-upload-button', div).hide();
 		}
-		if (allowFileManager) {
+		if (allowFilemanage) {
 			viewServerBtn.click(function(e) {
-				self.loadPlugin('filemanager', function() {
-					self.plugin.filemanagerDialog({
+				self.loadPlugin('filemanage', function() {
+					self.plugin.filemanageDialog({
 						viewType : 'LIST',
 						dirName : 'file',
 						clickFn : function(url, title) {
@@ -7676,7 +7676,7 @@ KindEditor.plugin('map', function(K) {
 KindEditor.plugin('media', function(K) {
 	var self = this, name = 'media', lang = self.lang(name + '.'),
 		allowMediaUpload = K.undef(self.allowMediaUpload, true),
-		allowFileManager = K.undef(self.allowFileManager, false),
+		allowFilemanage = K.undef(self.allowFilemanage, false),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
 		extraParams = K.undef(self.extraFileUploadParams, {}),
 		filePostName = K.undef(self.filePostName, 'imgFile'),
@@ -7793,10 +7793,10 @@ KindEditor.plugin('media', function(K) {
 				K('.ke-upload-button', div).hide();
 			}
 
-			if (allowFileManager) {
+			if (allowFilemanage) {
 				viewServerBtn.click(function(e) {
-					self.loadPlugin('filemanager', function() {
-						self.plugin.filemanagerDialog({
+					self.loadPlugin('filemanage', function() {
+						self.plugin.filemanageDialog({
 							viewType : 'LIST',
 							dirName : 'media',
 							clickFn : function(url, title) {

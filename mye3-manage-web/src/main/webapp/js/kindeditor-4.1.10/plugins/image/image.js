@@ -12,7 +12,7 @@ KindEditor.plugin('image', function(K) {
 		allowImageUpload = K.undef(self.allowImageUpload, true),
 		allowImageRemote = K.undef(self.allowImageRemote, true),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
-		allowFileManager = K.undef(self.allowFileManager, false),
+		allowFilemanage = K.undef(self.allowFilemanage, false),
 		uploadJson = K.undef(self.uploadJson, self.basePath + 'php/upload_json.php'),
 		imageTabIndex = K.undef(self.imageTabIndex, 0),
 		imgPath = self.pluginsPath + 'image/images/',
@@ -87,7 +87,7 @@ KindEditor.plugin('image', function(K) {
 			//local upload - end
 			'</div>'
 		].join('');
-		var dialogWidth = showLocal || allowFileManager ? 450 : 400,
+		var dialogWidth = showLocal || allowFilemanage ? 450 : 400,
 			dialogHeight = showLocal && showRemote ? 300 : 250;
 		var dialog = self.createDialog({
 			name : name,
@@ -217,10 +217,10 @@ KindEditor.plugin('image', function(K) {
 		uploadbutton.fileBox.change(function(e) {
 			localUrlBox.val(uploadbutton.fileBox.val());
 		});
-		if (allowFileManager) {
+		if (allowFilemanage) {
 			viewServerBtn.click(function(e) {
-				self.loadPlugin('filemanager', function() {
-					self.plugin.filemanagerDialog({
+				self.loadPlugin('filemanage', function() {
+					self.plugin.filemanageDialog({
 						viewType : 'VIEW',
 						dirName : 'image',
 						clickFn : function(url, title) {

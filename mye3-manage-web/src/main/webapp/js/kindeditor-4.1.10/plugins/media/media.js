@@ -10,7 +10,7 @@
 KindEditor.plugin('media', function(K) {
 	var self = this, name = 'media', lang = self.lang(name + '.'),
 		allowMediaUpload = K.undef(self.allowMediaUpload, true),
-		allowFileManager = K.undef(self.allowFileManager, false),
+		allowFilemanage = K.undef(self.allowFilemanage, false),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
 		extraParams = K.undef(self.extraFileUploadParams, {}),
 		filePostName = K.undef(self.filePostName, 'imgFile'),
@@ -127,10 +127,10 @@ KindEditor.plugin('media', function(K) {
 				K('.ke-upload-button', div).hide();
 			}
 
-			if (allowFileManager) {
+			if (allowFilemanage) {
 				viewServerBtn.click(function(e) {
-					self.loadPlugin('filemanager', function() {
-						self.plugin.filemanagerDialog({
+					self.loadPlugin('filemanage', function() {
+						self.plugin.filemanageDialog({
 							viewType : 'LIST',
 							dirName : 'media',
 							clickFn : function(url, title) {

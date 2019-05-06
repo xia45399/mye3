@@ -10,7 +10,7 @@
 KindEditor.plugin('insertfile', function(K) {
 	var self = this, name = 'insertfile',
 		allowFileUpload = K.undef(self.allowFileUpload, true),
-		allowFileManager = K.undef(self.allowFileManager, false),
+		allowFilemanage = K.undef(self.allowFilemanage, false),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
 		uploadJson = K.undef(self.uploadJson, self.basePath + 'php/upload_json.php'),
 		extraParams = K.undef(self.extraFileUploadParams, {}),
@@ -101,10 +101,10 @@ KindEditor.plugin('insertfile', function(K) {
 		} else {
 			K('.ke-upload-button', div).hide();
 		}
-		if (allowFileManager) {
+		if (allowFilemanage) {
 			viewServerBtn.click(function(e) {
-				self.loadPlugin('filemanager', function() {
-					self.plugin.filemanagerDialog({
+				self.loadPlugin('filemanage', function() {
+					self.plugin.filemanageDialog({
 						viewType : 'LIST',
 						dirName : 'file',
 						clickFn : function(url, title) {

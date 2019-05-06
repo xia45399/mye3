@@ -1,7 +1,7 @@
 package com.summer.manage.controller;
 
 import com.summer.common.pojo.EasyUITreeNode;
-import com.summer.service.ItemCatService;
+import com.summer.manage.service.ItemCatService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
