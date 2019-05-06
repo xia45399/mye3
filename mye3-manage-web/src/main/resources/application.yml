@@ -1,6 +1,10 @@
 spring:
   application:
     name: manage-web
+  mvc:
+    view:
+      suffix: /jsp/
+      prefix: '.jsp'
 
 server:
   port: 8081

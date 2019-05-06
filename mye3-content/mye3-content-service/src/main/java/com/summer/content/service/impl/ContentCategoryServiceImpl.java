@@ -7,12 +7,11 @@ import java.util.List;
 import com.summer.common.pojo.EasyUITreeNode;
 import com.summer.common.utils.E3Result;
 import com.summer.content.service.ContentCategoryService;
-import com.summer.mapper.TbContentCategoryMapper;
-import com.summer.pojo.TbContentCategory;
-import com.summer.pojo.TbContentCategoryExample;
+import com.summer.manage.mapper.TbContentCategoryMapper;
+import com.summer.manage.pojo.TbContentCategory;
+import com.summer.manage.pojo.TbContentCategoryExample;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 
 
 /**

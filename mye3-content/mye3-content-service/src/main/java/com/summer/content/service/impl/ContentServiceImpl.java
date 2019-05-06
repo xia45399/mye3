@@ -2,11 +2,11 @@ package com.summer.content.service.impl;
 
 import com.summer.common.utils.E3Result;
 import com.summer.content.service.ContentService;
-import com.summer.mapper.TbContentMapper;
-import com.summer.pojo.TbContent;
-import com.summer.pojo.TbContentExample;
+import com.summer.manage.mapper.TbContentMapper;
+import com.summer.manage.pojo.TbContent;
+import com.summer.manage.pojo.TbContentExample;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;

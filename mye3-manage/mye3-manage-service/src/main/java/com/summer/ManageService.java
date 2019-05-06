@@ -1,4 +1,4 @@
-package com.summer.manage;
+package com.summer;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
