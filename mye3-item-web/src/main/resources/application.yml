@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: item-web
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  #关闭默认模板引擎
+  thymeleaf:
+    cache: false
+    enabled: false
+server:
+  port: 8086
+
+dubbo:
+  registry:
+    address: zookeeper://localhost:2181
+  consumer:
+    check: false
+#\u9759\u6001\u9875\u9762\u8f93\u51fa\u76ee\u5f55
+HTML_GEN_PATH: D:/temp/JavaEE32/freemarker/item/

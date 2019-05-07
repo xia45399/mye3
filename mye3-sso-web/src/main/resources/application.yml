@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: sso-web
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .jsp
+  #关闭默认模板引擎
+  thymeleaf:
+    cache: false
+    enabled: false
+server:
+  port: 8083
+
+dubbo:
+  registry:
+    address: zookeeper://localhost:2181
+  consumer:
+    check: false
+#cookie\u4E2D\u4FDD\u5B58token\u7684key
+TOKEN_KEY: token
