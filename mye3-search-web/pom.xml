@@ -2,23 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.3.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.summer</groupId>
-    <version>2.0-SNAPSHOT</version>
+    <parent>
+        <artifactId>mye3</artifactId>
+        <groupId>com.summer</groupId>
+        <version>2.0-SNAPSHOT</version>
+    </parent>
     <artifactId>mye3-search-web</artifactId>
     <packaging>war</packaging>
-
-    <properties>
-        <dubbo.version>2.7.0</dubbo.version>
-        <curator.version>4.0.1</curator.version>
-        <zookeeper.version>3.4.13</zookeeper.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -43,27 +34,22 @@
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${dubbo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
-            <version>${dubbo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
-            <version>${curator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
-            <version>${curator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>${zookeeper.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>log4j</artifactId>

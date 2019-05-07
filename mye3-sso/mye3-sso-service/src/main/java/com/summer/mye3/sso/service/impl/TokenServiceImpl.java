@@ -1,13 +1,8 @@
 package com.summer.mye3.sso.service.impl;
 
-import com.summer.common.jedis.JedisClient;
 import com.summer.common.utils.E3Result;
-import com.summer.common.utils.JsonUtils;
 import com.summer.mye3.sso.service.TokenService;
-import com.summer.mye3.manage.pojo.TbUser;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 
