@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ManageService {
+public class SsoService {
     public static void main(String[] args) {
-        SpringApplication.run(ManageService.class, args);
+        SpringApplication.run(SsoService.class, args);
     }
 }

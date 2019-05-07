@@ -1,13 +1,13 @@
 package com.summer.mye3.sso.service.impl;
 
 import com.summer.common.utils.E3Result;
-import com.summer.mapper.TbUserMapper;
+import com.summer.mye3.manage.mapper.TbUserMapper;
+import com.summer.mye3.manage.pojo.TbUser;
+import com.summer.mye3.manage.pojo.TbUserExample;
 import com.summer.mye3.sso.service.RegisterService;
-import com.summer.pojo.TbUser;
-import com.summer.pojo.TbUserExample;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;

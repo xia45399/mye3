@@ -1,6 +1,6 @@
 spring:
   application:
-    name: manage-service
+    name: sso-service
   datasource:
     url: jdbc:mysql://localhost:3306/mye3?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,20 +10,16 @@ spring:
     host: localhost
 mybatis:
   mapper-locations: classpath*:/mapper/*.xml
-
 dubbo:
   registry:
     address: zookeeper://localhost:2181
     check: false
+  protocol:
+    port: 20883
   consumer:
     check: false
   scan:
-    base-packages: com.summer.mye3.manage.service.impl
-  protocol:
-    port: 20881
+    base-packages: com.summer.mye3.sso.service.impl
 
-#商品数据在缓存中key的前缀
-REDIS_ITEM_PRE: ITEM_INFO
-#商品数据缓存的过期时间，默认为一小时
-ITEM_CACHE_EXPIRE: 3600
-
+#session\u7684\u8fc7\u671f\u65f6\u95f4
+SESSION_EXPIRE: 1800

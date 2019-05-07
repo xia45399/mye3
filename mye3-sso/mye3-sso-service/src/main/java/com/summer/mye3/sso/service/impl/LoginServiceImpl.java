@@ -1,15 +1,13 @@
 package com.summer.mye3.sso.service.impl;
 
-import com.summer.common.jedis.JedisClient;
 import com.summer.common.utils.E3Result;
-import com.summer.common.utils.JsonUtils;
-import com.summer.mapper.TbUserMapper;
+import com.summer.mye3.manage.mapper.TbUserMapper;
+import com.summer.mye3.manage.pojo.TbUser;
+import com.summer.mye3.manage.pojo.TbUserExample;
 import com.summer.mye3.sso.service.LoginService;
-import com.summer.pojo.TbUser;
-import com.summer.pojo.TbUserExample;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.util.List;
@@ -29,8 +27,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private TbUserMapper userMapper;
-    @Autowired
-    private JedisClient jedisClient;
+    // TODO: 2019/5/7 缓存
+//    @Autowired
+//    private JedisClient jedisClient;
 
     @Value("${SESSION_EXPIRE}")
     private Integer SESSION_EXPIRE;
@@ -59,9 +58,9 @@ public class LoginServiceImpl implements LoginService {
         String token = UUID.randomUUID().toString();
         // 4、把用户信息写入redis，key：token value：用户信息
         user.setPassword(null);
-        jedisClient.set("SESSION:" + token, JsonUtils.objectToJson(user));
+//        jedisClient.set("SESSION:" + token, JsonUtils.objectToJson(user));
         // 5、设置Session的过期时间
-        jedisClient.expire("SESSION:" + token, SESSION_EXPIRE);
+//        jedisClient.expire("SESSION:" + token, SESSION_EXPIRE);
         // 6、把token返回
 
         return E3Result.ok(token);
