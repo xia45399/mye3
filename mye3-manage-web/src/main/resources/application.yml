@@ -3,9 +3,12 @@ spring:
     name: manage-web
   mvc:
     view:
-      suffix: /jsp/
-      prefix: '.jsp'
-
+      prefix: /jsp/
+      suffix: .jsp
+#关闭默认模板引擎
+  thymeleaf:
+    cache: false
+    enabled: false
 server:
   port: 8081
   servlet:

@@ -10,6 +10,7 @@ spring:
     host: localhost
 mybatis:
   mapper-locations: classpath*:/mapper/*.xml
+
 dubbo:
   registry:
     address: zookeeper://localhost:2181
@@ -18,6 +19,9 @@ dubbo:
     check: false
   scan:
     base-packages: com.summer.manage.service.impl
+  protocol:
+    port: 20881
+
 #商品数据在缓存中key的前缀
 REDIS_ITEM_PRE: ITEM_INFO
 #商品数据缓存的过期时间，默认为一小时

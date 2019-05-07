@@ -2,9 +2,10 @@ package com.summer.manage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class ManageWeb {
+public class ManageWeb extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(ManageWeb.class, args);
