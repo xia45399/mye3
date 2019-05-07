@@ -17,5 +17,5 @@ dubbo:
     address: zookeeper://localhost:2181
   consumer:
     check: false
-#cookie\u4E2D\u4FDD\u5B58token\u7684key
+#cookie中保存token的key
 TOKEN_KEY: token

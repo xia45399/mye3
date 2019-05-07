@@ -1,3 +1,4 @@
+host: localhost
 spring:
   application:
     name: manage-web
@@ -16,6 +17,6 @@ server:
 
 dubbo:
   registry:
-    address: zookeeper://localhost:2181
+    address: zookeeper://${host}:2181
   consumer:
     check: false
