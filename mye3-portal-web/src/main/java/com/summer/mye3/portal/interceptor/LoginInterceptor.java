@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class LoginInterceptor implements HandlerInterceptor {
-    @Value("${SSO_URL}")
-    private String SSO_URL;
+    @Value("${SSO_PORT}")
+    private String SSO_PORT;
 
     @Resource
     private TokenService tokenService;
@@ -24,10 +24,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         //从cookie中取token
         String token = CookieUtils.getCookieValue(request, "token");
+        String addr = request.getRequestURL().toString();
+        String ssoUrl = addr.split(":")[0];
         //判断token是否存在
         if (StringUtils.isBlank(token)) {
             //如果token不存在，未登录状态，跳转到sso系统的登录页面。用户登录成功后，跳转到当前请求的url
-            response.sendRedirect(SSO_URL + "/page/login?redirect=" + request.getRequestURL());
+            response.sendRedirect(ssoUrl + SSO_PORT + "/page/login?redirect=" + request.getRequestURL());
             //拦截
             return false;
         }
@@ -36,7 +38,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         //如果取不到，用户登录已经过期，需要登录。
         if (e3Result.getStatus() != 200) {
             //如果token不存在，未登录状态，跳转到sso系统的登录页面。用户登录成功后，跳转到当前请求的url
-            response.sendRedirect(SSO_URL + "/page/login?redirect=" + request.getRequestURL());
+            response.sendRedirect(ssoUrl + SSO_PORT + "/page/login?redirect=" + request.getRequestURL());
             //拦截
             return false;
         }
