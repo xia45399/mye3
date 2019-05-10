@@ -1,3 +1,4 @@
+host: localhost
 spring:
   application:
     name: manage-web
@@ -16,10 +17,10 @@ server:
 
 dubbo:
   registry:
-    address: zookeeper://localhost:2181
+    address: zookeeper://${host}:2181
   consumer:
     check: false
 #轮播图内容的分类
 CONTENT_LUNBO_ID: 89
 #sso系统的url地址
-SSO_URL: http://localhost:8083
+SSO_URL: http://${host}:8083
