@@ -26,6 +26,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String token = CookieUtils.getCookieValue(request, "token");
         String addr = request.getRequestURL().toString();
         String ssoUrl = addr.split(":")[0];
+        System.out.println("ssoUrl="+ssoUrl);
         //判断token是否存在
         if (StringUtils.isBlank(token)) {
             //如果token不存在，未登录状态，跳转到sso系统的登录页面。用户登录成功后，跳转到当前请求的url
